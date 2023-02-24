@@ -9,6 +9,12 @@ class LoginNewPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginNewPage> {
+  final _formField = GlobalKey<FormState>();
+  final _phoneNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool passToggle = true;
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,6 +40,7 @@ class _LoginPageState extends State<LoginNewPage> {
                 child: Column(
                   children: [
                      TextField(
+                       controller: _phoneNumberController,
                       decoration: InputDecoration(
                           fillColor: Colors.grey.shade100,
                           filled: true,
@@ -45,16 +52,24 @@ class _LoginPageState extends State<LoginNewPage> {
                     ),
                     const SizedBox(height: 16),
                      TextField(
+                       controller: _passwordController,
                       decoration: InputDecoration(
-
                         fillColor: Colors.grey.shade100,
                           filled: true,
                           hintText: "Password",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: (){
+                            setState(() {
+                              passToggle = !passToggle;
+                            });
+                          },
+                          child: Icon(passToggle ? Icons.visibility : Icons.visibility_off),
                         )
                       ),
-                      obscureText: true,
+                      obscureText: passToggle,
                     ),
                     const SizedBox(height: 10),
                     Row(

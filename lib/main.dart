@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/login/login.dart';
+import 'package:flutter_dev/widget/appBar.dart';
 import 'package:flutter_dev/login/register.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
+      initialRoute: 'appBar',
       routes: {
+        'appBar': (context)=> const AppBarScreen(),
         'login': (context)=> const LoginNewPage(),
         'register': (context)=> const RegisterNewPage(),
       },
